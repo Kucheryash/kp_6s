@@ -39,7 +39,7 @@ public class MainController {
         Configurations.USER = newKey.get().getUser().getId();
         return "home";
     }
-
+//Somebody told me
     @GetMapping("/registration")
     public String registration(@ModelAttribute("key") Key key){
         return "register";
