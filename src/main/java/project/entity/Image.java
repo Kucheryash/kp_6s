@@ -6,29 +6,33 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@Entity(name = "countries")
+@Entity(name = "images")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Country {
-    @Column(name = "id_country")
+public class Image {
     @Id
+    @Column(name = "id_image")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String country;
+    private String name;
 
     @Column(nullable = false)
-    private String region;
+    private String content_type;
 
     @Column(nullable = false)
-    private String city;
+    private boolean is_preview;
 
-    @OneToMany(mappedBy= "country")
-    private List<Car> cars;
+    @Lob
+    @Column(nullable = false)
+    private byte[] bytes;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id", nullable = false, foreignKey = @ForeignKey(name = "fk_images_id_car"))
+    private Car car;
 
 }

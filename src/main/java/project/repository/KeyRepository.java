@@ -1,12 +1,13 @@
 package project.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import project.entity.Key;
 
 import java.util.Optional;
 
 @Repository
-public interface KeyRepository extends CrudRepository<Key, Long> {
+public interface KeyRepository extends JpaRepository<Key, Long> {
      Optional<Key> findByLoginAndPassword(String login, String password);
+     Key findByLogin(String login);
 }

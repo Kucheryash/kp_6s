@@ -1,10 +1,22 @@
 package project.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 
 @Entity(name = "roles")
-public class Key {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class Key implements UserDetails{
     @Column(name = "id_key")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,50 +31,40 @@ public class Key {
     @Column(nullable = false)
     private String password;
 
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_key_id_user"))
     private User user;
 
-    public Key() {
+    //security
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User id_user) {
-        this.user = id_user;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
-
-    public String getLogin() {
+    @Override
+    public String getUsername() {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public String getPassword() {
-        return password;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 }

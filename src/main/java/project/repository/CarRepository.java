@@ -1,10 +1,10 @@
 package project.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import project.entity.Car;
 
 @Repository
-public interface CarRepository extends CrudRepository<Car, Long> {
+public interface CarRepository extends JpaRepository<Car, Long> {
 
 }

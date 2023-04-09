@@ -1,9 +1,18 @@
 package project.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.List;
 
 @Entity(name = "cars")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Car {
     @Column(name = "id_car")
     @Id
@@ -58,134 +67,7 @@ public class Car {
     @OneToMany(mappedBy= "car")
     private List<Favorite> favorites;
 
-    public Car() {
-    }
+    @OneToMany(mappedBy= "car")
+    private List<Image> images;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id_car) {
-        this.id = id_car;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public int getYear_of_issue() {
-        return year_of_issue;
-    }
-
-    public void setYear_of_issue(int year_of_issue) {
-        this.year_of_issue = year_of_issue;
-    }
-
-    public String getTransmission() {
-        return transmission;
-    }
-
-    public void setTransmission(String transmission) {
-        this.transmission = transmission;
-    }
-
-    public String getEngine_type() {
-        return engine_type;
-    }
-
-    public void setEngine_type(String engine_type) {
-        this.engine_type = engine_type;
-    }
-
-    public double getVolume() {
-        return volume;
-    }
-
-    public void setVolume(double volume) {
-        this.volume = volume;
-    }
-
-    public String getDrive() {
-        return drive;
-    }
-
-    public void setDrive(String drive) {
-        this.drive = drive;
-    }
-
-    public int getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public User getDealer() {
-        return dealer;
-    }
-
-    public void setDealer(User dealer_id) {
-        this.dealer = dealer_id;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country_id) {
-        this.country = country_id;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public List<Favorite> getFavorites() {
-        return favorites;
-    }
-
-    public void setFavorites(List<Favorite> favorites) {
-        this.favorites = favorites;
-    }
 }

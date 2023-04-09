@@ -1,8 +1,16 @@
 package project.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity(name = "favorites")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Favorite {
     @Column(name = "id_favorite")
     @Id
@@ -17,30 +25,4 @@ public class Favorite {
     @JoinColumn(name = "id_car", nullable = false, foreignKey = @ForeignKey(name = "fk_fav_id_car"))
     private Car car;
 
-    public Favorite() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User id_user) {
-        this.user = id_user;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car id_car) {
-        this.car = id_car;
-    }
 }
