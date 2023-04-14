@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BuyCar</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Регистрация</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link th:href="@{styles/style.css}" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+    <div th:replace="fragments/header :: header"></div>
 </head>
+<body>
 <div class="container p-3 text-center" style="background-color: white; border-radius:5px; width:300px">
     <br />
     <h2>Регистрация</h2>
     <br />
     <form th:method="post" th:action="@{/register}">
-        <form th:object="${user}">
-            <div>
-                <label asp-for="email">Электронная почта:</label>
-                <br/>
-                <input type="text" id="email" th:field="*{email}">
-                <span asp-validation-for="email"></span>
-            </div>
-        </form>
+<!--        <form th:object="${user}">-->
+<!--            <div>-->
+<!--                <label asp-for="email">Электронная почта:</label>-->
+<!--                <br/>-->
+<!--                <input type="text" id="email" th:field="*{email}">-->
+<!--                <span asp-validation-for="email"></span>-->
+<!--            </div>-->
+<!--        </form>-->
         <form th:object="${key}">
             <div>
                 <label asp-for="login">Логин:</label>
@@ -39,4 +43,7 @@
         </div>
     </form>
 </div>
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
 </html>

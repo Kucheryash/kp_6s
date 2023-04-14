@@ -39,4 +39,5 @@ public class MainController {
         Configurations.USER = newKey.get().getUser().getId();
         return "home";
     }
+
 }

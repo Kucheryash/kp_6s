@@ -9,5 +9,4 @@ import java.util.Optional;
 @Repository
 public interface KeyRepository extends JpaRepository<Key, Long> {
      Optional<Key> findByLoginAndPassword(String login, String password);
-     Key findByLogin(String login);
 }

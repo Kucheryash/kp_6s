@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Noto Sans Georgian', sans-serif;
+    font-size: 16px;
+}
+.head{
+    display: flex;
+    justify-content: space-between
+}
+.navbar{
+    padding: 0;
+}
+.header{
+    font-weight: bold;
+    background: linear-gradient(to right, #ffffff, #e8b3fa);
+    text-decoration-color: #3b0064;
+}
+.footer{
+    background-color: #3b0064;
+    text-decoration-color: #ffffff;
+}
