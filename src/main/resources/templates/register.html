@@ -11,39 +11,50 @@
     <div th:replace="fragments/header :: header"></div>
 </head>
 <body>
-<div class="container p-3 text-center" style="background-color: white; border-radius:5px; width:300px">
-    <br />
-    <h2>Регистрация</h2>
-    <br />
-    <form th:method="post" th:action="@{/register}">
-<!--        <form th:object="${user}">-->
-<!--            <div>-->
-<!--                <label asp-for="email">Электронная почта:</label>-->
-<!--                <br/>-->
-<!--                <input type="text" id="email" th:field="*{email}">-->
-<!--                <span asp-validation-for="email"></span>-->
-<!--            </div>-->
-<!--        </form>-->
-        <form th:object="${key}">
-            <div>
-                <label asp-for="login">Логин:</label>
-                <br/>
-                <input type="text" id="login" th:field="*{login}">
-                <span asp-validation-for="login"></span>
+<div class="container" style="height: 80vh">
+    <div class="container text-center" style="width:415px">
+        <br/>
+        <h2>Регистрация</h2>
+        <br/>
+        <form class="authorization" th:method="post" th:action="@{/register}">
+            <div th:object="${user}">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="seller" value="seller" th:field="*{type}">
+                    <label class="form-check-label" for="seller">Хочу продать</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="customer" value="customer" th:field="*{type}">
+                    <label class="form-check-label" for="customer">Хочу купить</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="company" value="company" th:field="*{type}">
+                    <label class="form-check-label" for="company">Компания</label>
+                </div>
+                <br/><br/>
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" aria-describedby="floatingEmail" required th:field="*{email}">
+                    <label for="floatingEmail">Электронная почта</label>
+                </div>
             </div>
-            <div>
-                <label asp-for="password">Пароль:</label><br />
-                <input type="password" id="password" th:field="*{password}">
-                <span asp-validation-for="Password"></span>
+            <br/>
+            <div th:object="${key}">
+                <div class="form-floating has-validation">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Input" aria-describedby="floatingInput" required th:field="*{login}">
+                    <label for="floatingInput">Логин</label>
+                </div>
+                <br/>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" aria-describedby="floatingPassword" required th:field="*{password}">
+                    <label for="floatingPassword">Пароль</label>
+                </div>
+            </div>
+            <br/>
+            <div class="authorization">
+                <button class="w-100 btn btn-lg btn-light" style="background-color: #faf0fe" type="submit">Зарегистрироваться</button>
             </div>
         </form>
-        <div class="text-center">
-            <br/>
-            <input type="submit" value="Зарегистрировать" />
-        </div>
-    </form>
+    </div>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
-
 </body>
 </html>

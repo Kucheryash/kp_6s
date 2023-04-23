@@ -11,10 +11,32 @@
     <div th:replace="fragments/header :: header"></div>
 </head>
 <body>
-<div class="container">
-    </br>
-    <a style="text-align: center">Здесь будет много машинок</a>
-    <br>
+<div class="container" style="min-height: 80vh">
+    <p class="text-center">Здесь будет много машинок</p>
+
+    <div class="card" style="width: 1200px; height: 160px">
+        <div class="row">
+<!--            <div class="card-body">-->
+                <div class="col" style="width: 160px; height: 160px">
+                    <img src="images/empty.png" class="img-floating" alt="Logo">
+                </div>
+                <div class="col" style="width: 200px; height: 160px">
+                    <h5 class="card-title">Заголовок карточки</h5>
+                </div>
+                <div class="col" style="width: 650px; height: 160px">
+                    <p class="card-text">Это более широкая карта с вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту. Этот контент немного длиннее.</p>
+                    <p class="card-text"><small class="text-muted">Последнее обновление 3 мин. назад</small></p>
+                </div>
+                <div class="col" style="width: 140px; height: 160px">
+                    <p class="card-text">Тут цена</p>
+                </div>
+                <div class="col" style="width: 50px; height: 160px">
+                    <p class="card-text">*</p>
+                </div>
+<!--            </div>-->
+        </div>
+    </div>
+
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>
