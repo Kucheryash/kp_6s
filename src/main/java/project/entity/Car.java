@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "cars")
@@ -67,7 +68,8 @@ public class Car {
     @OneToMany(mappedBy= "car")
     private List<Favorite> favorites;
 
-    @OneToMany(mappedBy= "car")
-    private List<Image> images;
+    @OneToMany(mappedBy= "car", cascade = CascadeType.ALL)
+    private List<Image> images = new ArrayList<>();
+    private Long previewImageId;
 
 }

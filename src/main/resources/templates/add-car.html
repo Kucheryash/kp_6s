@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Список сравнений</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link th:href="@{../styles/style.css}" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+    <div th:replace="fragments/header :: header"></div>
+</head>
+<body>
+<div class="container" style="height: 80vh">
+    <br/>
+    <h2 style="text-align: center">Подать объявление</h2>
+    <br/>
+    <div class="container text-center" style="width:360px">
+        <form class="authorization" th:method="post" th:action="@{/add-car/{id}(id=${user.getId()})}" th:object="${car}">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="brand" placeholder="text" aria-describedby="brand" required th:field="*{brand}">
+                <label for="brand">Марка</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="model" placeholder="text" aria-describedby="model" required th:field="*{model}">
+                <label for="model">Модель</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="number" class="form-control" id="year" placeholder="2023" aria-describedby="year" min="2004" max="2023" required th:field="*{year_of_issue}">
+                <label for="year">Год выпуска</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="transmission" placeholder="text" aria-describedby="transmission" required th:field="*{transmission}">
+                <label for="transmission">Коробка передач</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="number" class="form-control" id="volume" placeholder="1.6" aria-describedby="volume" min="1.1" max="4.0" required th:field="*{volume}">
+                <label for="volume">Объём</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="body" placeholder="text" aria-describedby="body" required th:field="*{body}">
+                <label for="body">Кузов</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="drive" placeholder="text" aria-describedby="drive" required th:field="*{drive}">
+                <label for="drive">Привод</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="engine" placeholder="text" aria-describedby="engine" required th:field="*{engine_type}">
+                <label for="engine">Тип двигателя</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="number" class="form-control" id="mileage" placeholder="10000" aria-describedby="mileage" required th:field="*{mileage}">
+                <label for="mileage">Пробег</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="number" class="form-control" id="price" placeholder="12000" aria-describedby="price" required th:field="*{price}">
+                <label for="price">Цена</label>
+            </div>
+            <br/>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="description" placeholder="text" aria-describedby="description" th:field="*{description}">
+                <label for="description">Описание</label>
+            </div>
+            <br/>
+            <div class="authorization">
+                <button class="w-100 btn btn-lg btn-light" style="background-color: #faf0fe" type="submit">Далее</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

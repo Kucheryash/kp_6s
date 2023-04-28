@@ -11,7 +11,7 @@ a{
 p{
     margin: 0;
 }
-h2{
+h2, h3, h4{
     color: #3b0064;
 }
 .head{
