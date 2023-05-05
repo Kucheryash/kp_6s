@@ -29,10 +29,6 @@ public class Seller {
     @Column(nullable = false)
     private String phone;
 
-//    @OneToOne
-//    @JoinColumn(name = "email", nullable = false, foreignKey = @ForeignKey(name = "fk_seller_email"))
-//    private User email;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_seller_id_user"))
     private User user;

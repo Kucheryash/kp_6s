@@ -18,21 +18,8 @@ public class Image {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String path;
 
-    @Column(nullable = false)
-    private String content_type;
-
-    @Column(nullable = false)
-    private boolean is_preview;
-
-    @Lob
-    @Column(nullable = false)
-    private byte[] bytes;
-
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "car_id", nullable = false, foreignKey = @ForeignKey(name = "fk_images_id_car"))
-    private Car car;
+    private Long car;
 
 }

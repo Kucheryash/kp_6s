@@ -17,12 +17,14 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_fav_id_user"))
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "id_car", nullable = false, foreignKey = @ForeignKey(name = "fk_fav_id_car"))
     private Car car;
 
+    @Column(nullable = false)
+    private Long dealer;
 }

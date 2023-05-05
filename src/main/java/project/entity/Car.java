@@ -53,13 +53,12 @@ public class Car {
     @Column(length = 65535)
     private String description;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dealer_id", nullable = false, foreignKey = @ForeignKey(name = "fk_car_id_user"))
     private User dealer;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "country_id", nullable = false, foreignKey = @ForeignKey(name = "fk_car_id_country"))
+    @JoinColumn(name = "country_id", foreignKey = @ForeignKey(name = "fk_car_id_country"))
     private Country country;
 
     @OneToMany(mappedBy= "car")
@@ -68,8 +67,11 @@ public class Car {
     @OneToMany(mappedBy= "car")
     private List<Favorite> favorites;
 
-    @OneToMany(mappedBy= "car", cascade = CascadeType.ALL)
-    private List<Image> images = new ArrayList<>();
-    private Long previewImageId;
+    @Column
+    private int fav;
+
+    @OneToOne
+    @JoinColumn(name = "image", nullable = false, foreignKey = @ForeignKey(name = "fk_car_image"))
+    private Image image;
 
 }

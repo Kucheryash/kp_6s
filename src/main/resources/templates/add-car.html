@@ -1,69 +1,248 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://thymeleaf.org">
 <head>
-    <title>Список сравнений</title>
+    <title>Подать объявление</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link th:href="@{../styles/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{../../styles/style.css}" rel="stylesheet" type="text/css">
+    <link rel="icon" th:href="@{../../images/icon.png}" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
     <div th:replace="fragments/header :: header"></div>
 </head>
 <body>
-<div class="container" style="height: 80vh">
+<div class="container" style="min-height: 80vh">
     <br/>
     <h2 style="text-align: center">Подать объявление</h2>
     <br/>
-    <div class="container text-center" style="width:360px">
+    <div class="container" style="width:360px">
         <form class="authorization" th:method="post" th:action="@{/add-car/{id}(id=${user.getId()})}" th:object="${car}">
-            <div class="form-floating">
-                <input type="text" class="form-control" id="brand" placeholder="text" aria-describedby="brand" required th:field="*{brand}">
-                <label for="brand">Марка</label>
-            </div>
+            <p>Марка</p>
+            <select class="form-select" required th:field="*{brand}">
+                <option value="" selected></option>
+                <option value="Audi">Audi</option>
+                <option value="BMW">BMW</option>
+                <option value="Citroen">Citroen</option>
+                <option value="Ford">Ford</option>
+                <option value="Honda">Honda</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Kia">Kia</option>
+                <option value="Lexus">Lexus</option>
+                <option value="Mazda">Mazda</option>
+                <option value="Mercedes">Mercedes</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Opel">Opel</option>
+                <option value="Peugeot">Peugeot</option>
+                <option value="Renault">Renault</option>
+                <option value="Skoda">Skoda</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="Volvo">Volvo</option>
+            </select>
             <br/>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="model" placeholder="text" aria-describedby="model" required th:field="*{model}">
-                <label for="model">Модель</label>
-            </div>
+            <p>Модель</p>
+            <select class="form-select" required th:field="*{model}">
+                <option value="" selected></option>
+                <option value="Audi" style="font-size: 12px" disabled>Audi</option>
+                <option value="A3">A3</option>
+                <option value="A4">A4</option>
+                <option value="A7">A7</option>
+                <option value="Q5">Q5</option>
+                <option value="Q8">Q8</option>
+                <option value="" disabled></option>
+
+                <option value="BMW" style="font-size: 12px" disabled>BMW</option>
+                <option value="X7">X7</option>
+                <option value="X6">X6</option>
+                <option value="X5">X5</option>
+                <option value="M5">M5</option>
+                <option value="M8">M8</option>
+                <option value="" disabled></option>
+
+                <option value="Citroen" style="font-size: 12px" disabled>Citroen</option>
+                <option value="C3">C3</option>
+                <option value="C4">C4</option>
+                <option value="Berlingo">Berlingo</option>
+                <option value="Jumpy">Jumpy</option>
+                <option value="Xsara">Xsara</option>
+                <option value="" disabled></option>
+
+                <option value="Ford" style="font-size: 12px" disabled>Ford</option>
+                <option value="Focus">Focus</option>
+                <option value="Mondeo">Mondeo</option>
+                <option value="Mustang">Mustang</option>
+                <option value="Transit">Transit</option>
+                <option value="Fusion">Fusion</option>
+                <option value="" disabled></option>
+
+                <option value="Honda" style="font-size: 12px" disabled>Honda</option>
+                <option value="Accord">Accord</option>
+                <option value="CR-V">CR-V</option>
+                <option value="Civic">Civic</option>
+                <option value="HR-V">HR-V</option>
+                <option value="Insight">Insight</option>
+                <option value="" disabled></option>
+
+                <option value="Hyundai" style="font-size: 12px" disabled>Hyundai</option>
+                <option value="Accent">Accent</option>
+                <option value="Creta">Creta</option>
+                <option value="Santa Fe">Santa Fe</option>
+                <option value="Solaris">Solaris</option>
+                <option value="Sonata">Sonata</option>
+                <option value="" disabled></option>
+
+                <option value="Kia" style="font-size: 12px" disabled>Kia</option>
+                <option value="Ceed">Ceed</option>
+                <option value="Rio">Rio</option>
+                <option value="Sorento">Sorento</option>
+                <option value="Soul">Soul</option>
+                <option value="Sportage">Sportage</option>
+                <option value="" disabled></option>
+
+                <option value="Lexus" style="font-size: 12px" disabled>Lexus</option>
+                <option value="GS">GS</option>
+                <option value="IS">IS</option>
+                <option value="LS">LS</option>
+                <option value="NX">NX</option>
+                <option value="RX">RX</option>
+                <option value="" disabled></option>
+
+                <option value="Mazda" style="font-size: 12px" disabled>Mazda</option>
+                <option value="3">3</option>
+                <option value="626">626</option>
+                <option value="CX-5">CX-5</option>
+                <option value="CS-7">CS-7</option>
+                <option value="MPV">MPV</option>
+                <option value="" disabled></option>
+
+                <option value="Mercedes" style="font-size: 12px" disabled>Mercedes</option>
+                <option value="C-class">C-class</option>
+                <option value="E-class">E-class</option>
+                <option value="GL-class">GL-class</option>
+                <option value="M-class">M-class</option>
+                <option value="S-class">S-class</option>
+                <option value="" disabled></option>
+
+                <option value="Nissan" style="font-size: 12px" disabled>Nissan</option>
+                <option value="Almera">Almera</option>
+                <option value="Juke">Juke</option>
+                <option value="Primera">Primera</option>
+                <option value="Qashqai">Qashqai</option>
+                <option value="X-Trail">X-Trail</option>
+                <option value="" disabled></option>
+
+                <option value="Opel" style="font-size: 12px" disabled>Opel</option>
+                <option value="Astra">Astra</option>
+                <option value="Insignia">Insignia</option>
+                <option value="Omega">Omega</option>
+                <option value="Vectra">Vectra</option>
+                <option value="Zafira">Zafira</option>
+                <option value="" disabled></option>
+
+                <option value="Peugeot" style="font-size: 12px" disabled>Peugeot</option>
+                <option value="3008">3008</option>
+                <option value="307">307</option>
+                <option value="308">308</option>
+                <option value="406">406</option>
+                <option value="5008">5008</option>
+                <option value="" disabled></option>
+
+                <option value="Renault" style="font-size: 12px" disabled>Renault</option>
+                <option value="Arkana">Arkana</option>
+                <option value="Duster">Duster</option>
+                <option value="Laguna">Laguna</option>
+                <option value="Megane">Megane</option>
+                <option value="Scenic">Scenic</option>
+                <option value="" disabled></option>
+
+                <option value="Skoda" style="font-size: 12px" disabled>Skoda</option>
+                <option value="Fabia">Fabia</option>
+                <option value="Kodiaq">Kodiaq</option>
+                <option value="Octavia">Octavia</option>
+                <option value="Rapid">Rapid</option>
+                <option value="Superb">Superb</option>
+                <option value="" disabled></option>
+
+                <option value="Toyota" style="font-size: 12px" disabled>Toyota</option>
+                <option value="Avensis">Avensis</option>
+                <option value="Camry">Camry</option>
+                <option value="Corolla">Corolla</option>
+                <option value="Land Cruiser">Land Cruiser</option>
+                <option value="RAV4">RAV4</option>
+                <option value="" disabled></option>
+
+                <option value="Volkswagen" style="font-size: 12px" disabled>Volkswagen</option>
+                <option value="Caravelle">Caravelle</option>
+                <option value="Golf">Golf</option>
+                <option value="Jetta">Jetta</option>
+                <option value="Passat">Passat</option>
+                <option value="Polo">Polo</option>
+                <option value="" disabled></option>
+
+                <option value="Volvo" style="font-size: 12px" disabled>Volvo</option>
+                <option value="S60">S60</option>
+                <option value="S80">S80</option>
+                <option value="V60">V60</option>
+                <option value="XC60">XC60</option>
+                <option value="XC90">XC90</option>
+            </select>
             <br/>
             <div class="form-floating">
                 <input type="number" class="form-control" id="year" placeholder="2023" aria-describedby="year" min="2004" max="2023" required th:field="*{year_of_issue}">
                 <label for="year">Год выпуска</label>
             </div>
             <br/>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="transmission" placeholder="text" aria-describedby="transmission" required th:field="*{transmission}">
-                <label for="transmission">Коробка передач</label>
-            </div>
+            <p>Коробка передач</p>
+            <select class="form-select" required th:field="*{transmission}">
+                <option value="" selected></option>
+                <option value="Автомат">Автомат</option>
+                <option value="Механика">Механика</option>
+            </select>
             <br/>
             <div class="form-floating">
-                <input type="number" class="form-control" id="volume" placeholder="1.6" aria-describedby="volume" min="1.1" max="4.0" required th:field="*{volume}">
+                <input type="number" class="form-control" id="volume" placeholder="1.6" aria-describedby="volume" min="1.1" max="4.0" step="0.1" required th:field="*{volume}">
                 <label for="volume">Объём</label>
             </div>
             <br/>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="body" placeholder="text" aria-describedby="body" required th:field="*{body}">
-                <label for="body">Кузов</label>
-            </div>
+            <p>Тип кузова</p>
+            <select class="form-select" required th:field="*{body}">
+                <option value="" selected></option>
+                <option value="Внедорожник">Внедорожник</option>
+                <option value="Кабриолет">Кабриолет</option>
+                <option value="Купе">Купе</option>
+                <option value="Микроватобус">Микроватобус</option>
+                <option value="Минивен">Минивен</option>
+                <option value="Пикап">Пикап</option>
+                <option value="Седан">Седан</option>
+                <option value="Универсал">Универсал</option>
+                <option value="Хэтчбэк">Хэтчбэк</option>
+            </select>
+            <br/>
+            <p>Привод</p>
+            <select class="form-select" required th:field="*{drive}">
+                <option value="" selected></option>
+                <option value="Передний">Передний</option>
+                <option value="Задний">Задний</option>
+                <option value="Полный">Полный</option>
+            </select>
+            <br/>
+            <p>Тип двигателя</p>
+            <select class="form-select" required th:field="*{engine_type}">
+                <option value="" selected></option>
+                <option value="Бензин">Бензин</option>
+                <option value="Дизель">Дизель</option>
+                <option value="Гибрид">Гибрид</option>
+                <option value="Электро">Электро</option>
+            </select>
             <br/>
             <div class="form-floating">
-                <input type="text" class="form-control" id="drive" placeholder="text" aria-describedby="drive" required th:field="*{drive}">
-                <label for="drive">Привод</label>
-            </div>
-            <br/>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="engine" placeholder="text" aria-describedby="engine" required th:field="*{engine_type}">
-                <label for="engine">Тип двигателя</label>
-            </div>
-            <br/>
-            <div class="form-floating">
-                <input type="number" class="form-control" id="mileage" placeholder="10000" aria-describedby="mileage" required th:field="*{mileage}">
+                <input type="number" class="form-control" id="mileage" placeholder="10000" step="10000" min="1000" aria-describedby="mileage" required th:field="*{mileage}">
                 <label for="mileage">Пробег</label>
             </div>
             <br/>
             <div class="form-floating">
-                <input type="number" class="form-control" id="price" placeholder="12000" aria-describedby="price" required th:field="*{price}">
+                <input type="number" class="form-control" id="price" placeholder="12000" step="1000" min="200" aria-describedby="price" required th:field="*{price}">
                 <label for="price">Цена</label>
             </div>
             <br/>
@@ -78,6 +257,7 @@
         </form>
     </div>
 </div>
+<br/><br/>
 <div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
