@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import project.entity.*;
 import project.repository.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,20 +24,15 @@ public class MainController {
     private SellerRepository sellerRepository;
     @Autowired
     private CompanyRepository companyRepository;
-    @Autowired
-    private FavoriteRepository favoriteRepository;
-
 
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model, @ModelAttribute("filtering") CarForFilter carForFilter){
         model.addAttribute("cars", carRepository.findAll());
-        Car car = new Car();
-        model.addAttribute("filter", car);
         return "home";
     }
 
     @GetMapping("/home/{id}")
-    public String loginHome(Model model, @PathVariable ("id") long id){
+    public String loginHome(Model model, @PathVariable ("id") long id, @ModelAttribute("filtering") CarForFilter carForFilter){
         model.addAttribute("cars", carRepository.findAll());
         model.addAttribute("key", keyRepository.findById(id).get());
         return "home";
@@ -65,32 +59,36 @@ public class MainController {
 
     @PostMapping("/register")
     public String register(Model model, @ModelAttribute("user") User user, @ModelAttribute("key") Key key){
-        userRepository.save(user);
-        //customer
-        if (user.getType().equals("customer")){
-            key.setRole(0);
-            key.setUser(userRepository.getReferenceById(user.getId()));
-            keyRepository.save(key);
-            return "redirect:/home/"+user.getId();
+        Optional<Key> k = keyRepository.findByLogin(key.getLogin());
+        if (k.isEmpty()) {
+            userRepository.save(user);
+            //customer
+            if (user.getType().equals("customer")) {
+                key.setRole(0);
+                key.setUser(userRepository.getReferenceById(user.getId()));
+                keyRepository.save(key);
+                return "redirect:/home/" + user.getId();
 
-            //seller
-        } else if (user.getType().equals("seller")) {
-            key.setRole(1);
-            key.setUser(userRepository.getReferenceById(user.getId()));
-            keyRepository.save(key);
-            model.addAttribute("seller", new Seller());
-            model.addAttribute("user", userRepository.findById(user.getId()).get());
-            return "register-seller";
+                //seller
+            } else if (user.getType().equals("seller")) {
+                key.setRole(1);
+                key.setUser(userRepository.getReferenceById(user.getId()));
+                keyRepository.save(key);
+                model.addAttribute("seller", new Seller());
+                model.addAttribute("user", userRepository.findById(user.getId()).get());
+                return "register-seller";
 
-            //company
-        } else if (user.getType().equals("company")){
-            key.setRole(2);
-            key.setUser(userRepository.getReferenceById(user.getId()));
-            keyRepository.save(key);
-            model.addAttribute("company", new Company());
-            model.addAttribute("user", userRepository.findById(user.getId()).get());
-            return "register-company";
-        }
+                //company
+            } else if (user.getType().equals("company")) {
+                key.setRole(2);
+                key.setUser(userRepository.getReferenceById(user.getId()));
+                keyRepository.save(key);
+                model.addAttribute("company", new Company());
+                model.addAttribute("user", userRepository.findById(user.getId()).get());
+                return "register-company";
+            }
+        }else return "redirect:/registration";
+
         return "error";
     }
 

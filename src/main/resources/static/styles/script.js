@@ -25,3 +25,8 @@ function validateForm() {
     }
     return true;
 }
+
+function likeMsg() {
+    alert('Добавлено в Избранное');
+}
+

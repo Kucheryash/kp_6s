@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "cars")
@@ -32,14 +31,14 @@ public class Car {
     @Column(nullable = false)
     private String body;
 
-    @Column(nullable = false)
-    private int year_of_issue;
+    @Column(nullable = false, name = "year_of_issue")
+    private int year;
 
     @Column(nullable = false)
     private String transmission;
 
-    @Column(nullable = false)
-    private String engine_type;
+    @Column(nullable = false, name = "engine_type")
+    private String engine;
 
     @Column(nullable = false)
     private double volume;
@@ -53,11 +52,11 @@ public class Car {
     @Column(length = 65535)
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "dealer_id", nullable = false, foreignKey = @ForeignKey(name = "fk_car_id_user"))
     private User dealer;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "country_id", foreignKey = @ForeignKey(name = "fk_car_id_country"))
     private Country country;
 
@@ -71,7 +70,7 @@ public class Car {
     private int fav;
 
     @OneToOne
-    @JoinColumn(name = "image", nullable = false, foreignKey = @ForeignKey(name = "fk_car_image"))
+    @JoinColumn(name = "image", foreignKey = @ForeignKey(name = "fk_car_image"))
     private Image image;
 
 }

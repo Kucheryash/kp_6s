@@ -21,7 +21,7 @@
         <br/>
         <form class="authorization" th:method="post" th:action="@{/add-photo/{id}(id=${car.getId()})}" enctype="multipart/form-data" onsubmit="return validateForm()">
             <input type="file" name="images" id="images" multiple>
-            <br/><br/>
+            <br/><br/><br/>
             <button class="w-100 btn btn-lg btn-light" style="background-color: #faf0fe" type="submit">Загрузить фотографии</button>
         </form>
     </div>

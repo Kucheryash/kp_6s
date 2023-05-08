@@ -17,11 +17,11 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_fav_id_user"))
     private User user;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "id_car", nullable = false, foreignKey = @ForeignKey(name = "fk_fav_id_car"))
     private Car car;
 

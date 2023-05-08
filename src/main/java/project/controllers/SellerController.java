@@ -42,10 +42,12 @@ public class SellerController {
         key.setRole(1);
         key.setUser(userRepository.findById(id).get());
         keyRepository.save(key);
-        sellerRepository.save(seller);
+        Seller sel = sellerRepository.findByUser(userRepository.findById(id).get()).get();
+        sel.setUser(userRepository.findById(id).get());
+        sellerRepository.save(sel);
         model.addAttribute("user", user);
         model.addAttribute("key", key);
-        model.addAttribute("seller", seller);
-        return "redirect:/seller-acc";
+        model.addAttribute("seller", sel);
+        return "seller-acc";
     }
 }

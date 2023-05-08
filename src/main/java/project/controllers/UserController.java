@@ -44,7 +44,7 @@ public class UserController {
         List<Favorite> favorite = favoriteRepository.findByCarAndUser(car, user);
         Favorite fav = favoriteRepository.getReferenceById(favorite.get(0).getId());
         favoriteRepository.delete(fav);
-        return "redirect:/home/"+id_key;
+        return "redirect:/favorite/"+id_key;
     }
 
     @GetMapping("/favorite/{id}")

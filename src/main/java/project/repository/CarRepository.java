@@ -14,7 +14,5 @@ import java.util.Optional;
 public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> findAllByDealer(User user);
     List<Car> findAll();
-    List<Car> findByBrandAndModelAndPriceBetweenAndTransmissionAndBodyAndYear_of_issueBetweenAndEngine_typeAndDriveAndVolumeBetween(
-            String brand, String model, Integer minPrice, Integer maxPrice, String transmission, String body,
-            Integer minYear, Integer maxYear, String engineType, String drive, Double minVolume, Double maxVolume);
+    List<Car> findByBrandAndModelAndPriceBetween(String brand, String model, Integer minPrice, Integer maxPrice);
 }

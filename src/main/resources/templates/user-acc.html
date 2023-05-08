@@ -27,10 +27,10 @@
             <br/>
             <div th:object="${key}">
                 <label>Логин:</label>
-                <input type="text" class="form-control" placeholder="login" required th:field="*{login}">
+                <input type="text" class="form-control" placeholder="login" readonly th:field="*{login}">
                 <br/>
                 <label>Пароль:</label>
-                <input type="text" class="form-control" id="floatingPassword" placeholder="password" required th:field="*{password}" oninput="checkPasswordValidity()">
+                <input type="text" class="form-control" id="floatingPassword" placeholder="password" required minlength="6" maxlength="10" th:field="*{password}" oninput="checkPasswordValidity()">
             </div>
             <br/>
             <div class="authorization">

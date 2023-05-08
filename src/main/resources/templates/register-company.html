@@ -19,13 +19,14 @@
         <br/>
         <form class="authorization" th:method="post" th:action="@{/register-company/{id}(id=${user.getId()})}" th:object="${company}">
             <div class="form-floating">
-                <input type="text" class="form-control" id="name" placeholder="text" aria-describedby="name" required th:field="*{name}">
+                <input type="text" class="form-control" id="name" placeholder="text" maxlength="20" aria-describedby="name" required th:field="*{name}">
                 <label for="name">Название компании</label>
             </div>
             <br/>
             <div class="input-group">
                 <span class="input-group-text" id="phone">+</span>
-                <input type="text" class="form-control" id="phone_num" placeholder="Номер телефона" aria-describedby="phone" required minlength="11" maxlength="12" th:field="*{phone}">
+                <input type="text" class="form-control" id="phone_num" placeholder="Номер телефона" aria-describedby="phone"
+                       required minlength="11" maxlength="12" th:field="*{phone}" pattern="\d+" title="Пожалуйста, введите только цифры">
             </div>
             <br/>
             <div class="authorization">

@@ -21,7 +21,7 @@
         <form class="authorization" th:method="post" th:action="@{/register}">
             <div th:object="${user}">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="seller" value="seller" th:field="*{type}">
+                    <input class="form-check-input" type="radio" required name="flexRadioDefault" id="seller" value="seller" th:field="*{type}">
                     <label class="form-check-label" for="seller">Хочу продать</label>
                 </div>
                 <div class="form-check form-check-inline">
@@ -41,7 +41,7 @@
             <br/>
             <div th:object="${key}">
                 <div class="form-floating has-validation">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Input" aria-describedby="floatingInput" required th:field="*{login}">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Input" maxlength="20" aria-describedby="floatingInput" required th:field="*{login}">
                     <label for="floatingInput">Логин</label>
                 </div>
                 <br/>

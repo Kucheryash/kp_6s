@@ -189,7 +189,7 @@
             </select>
             <br/>
             <div class="form-floating">
-                <input type="number" class="form-control" id="year" placeholder="2023" aria-describedby="year" min="2004" max="2023" required th:field="*{year_of_issue}">
+                <input type="number" class="form-control" id="year" placeholder="2023" aria-describedby="year" min="2004" max="2023" required th:field="*{year}">
                 <label for="year">Год выпуска</label>
             </div>
             <br/>
@@ -228,7 +228,7 @@
             </select>
             <br/>
             <p>Тип двигателя</p>
-            <select class="form-select" required th:field="*{engine_type}">
+            <select class="form-select" required th:field="*{engine}">
                 <option value="" selected></option>
                 <option value="Бензин">Бензин</option>
                 <option value="Дизель">Дизель</option>
@@ -237,12 +237,12 @@
             </select>
             <br/>
             <div class="form-floating">
-                <input type="number" class="form-control" id="mileage" placeholder="10000" step="10000" min="1000" aria-describedby="mileage" required th:field="*{mileage}">
+                <input type="number" class="form-control" id="mileage" placeholder="10000" step="10000" min="1000" max="1000000" aria-describedby="mileage" required th:field="*{mileage}">
                 <label for="mileage">Пробег</label>
             </div>
             <br/>
             <div class="form-floating">
-                <input type="number" class="form-control" id="price" placeholder="12000" step="1000" min="200" aria-describedby="price" required th:field="*{price}">
+                <input type="number" class="form-control" id="price" placeholder="12000" step="1000" min="1000" max="1000000" aria-describedby="price" required th:field="*{price}">
                 <label for="price">Цена</label>
             </div>
             <br/>

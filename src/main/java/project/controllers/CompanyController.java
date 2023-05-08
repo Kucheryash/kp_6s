@@ -42,10 +42,14 @@ public class CompanyController {
         key.setRole(2);
         key.setUser(userRepository.findById(id).get());
         keyRepository.save(key);
-        companyRepository.save(company);
+        Company com = companyRepository.findByUser(userRepository.findById(id).get()).get();
+        com.setName(company.getName());
+        com.setPhone(company.getPhone());
+        com.setUser(userRepository.findById(id).get());
+        companyRepository.save(com);
         model.addAttribute("user", user);
         model.addAttribute("key", key);
         model.addAttribute("company", company);
-        return "redirect:/company-acc";
+        return "company-acc";
     }
 }

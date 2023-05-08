@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface KeyRepository extends JpaRepository<Key, Long> {
      Optional<Key> findByLoginAndPassword(String login, String password);
      Optional<Key> findByUser(User user);
+     Optional<Key> findByLogin(String login);
 }

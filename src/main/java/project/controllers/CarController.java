@@ -40,6 +40,8 @@ public class CarController {
         model.addAttribute("car", carRepository.findById(id).get());
         model.addAttribute("comments", commentRepository.findAllByCar(car));
         model.addAttribute("key", null);
+        List<Image> images = imageRepository.findAllByCar(car.getId());
+        model.addAttribute("images", images);
         return "car-info";
     }
 
@@ -51,6 +53,7 @@ public class CarController {
         model.addAttribute("comments", commentRepository.findAllByCar(car));
         List<Image> images = imageRepository.findAllByCar(car.getId());
         model.addAttribute("images", images);
+
         if (car.getDealer().getType().equals("seller")) {
             User user = userRepository.getReferenceById(car.getDealer().getId());
             model.addAttribute("seller", sellerRepository.findByUser(user).get());
@@ -151,8 +154,8 @@ public class CarController {
     @PostMapping("/delete-car/{id}")
     public String deleteCar(@PathVariable("id") long id, Model model){
         long id_user = carRepository.findById(id).get().getDealer().getId();
+        imageRepository.deleteAllByCar(carRepository.findById(id).get());
         carRepository.delete(carRepository.getReferenceById(id));
-        imageRepository.deleteAllByCar(id);
         return "redirect:/ads/"+id_user;
     }
 
@@ -165,25 +168,34 @@ public class CarController {
 
     @PostMapping("/edit-car/{id}")
     public String editCar(Model model, @ModelAttribute("car") Car car, @PathVariable("id") long id){
-        car.setDealer(userRepository.getReferenceById(id));
+        car.setDealer(carRepository.findById(id).get().getDealer());
         car.setCountry(carRepository.findById(id).get().getCountry());
-        car.setFav(0);
+        car.setFav(carRepository.findById(id).get().getFav());
+        car.setImage(carRepository.findById(id).get().getImage());
         carRepository.save(car);
+
         long id_dealer = car.getDealer().getId();
+        model.addAttribute("cars", carRepository.findAllByDealer(userRepository.findById(id_dealer).get()));
+        model.addAttribute("key", keyRepository.findById(id_dealer).get());
         return "redirect:/ads/"+id_dealer;
     }
 
-    @PostMapping("/filter/{id}")
-    public String filtering(@RequestParam(name = "brand") String brand, @RequestParam(name = "model") String model_car,
-                            @RequestParam(name = "min_price") Integer min_price, @RequestParam(name = "max_price") Integer max_price,
-                            @RequestParam(name = "transmission") String transmission, @RequestParam(name = "body") String body,
-                            @RequestParam(name = "min_year") Integer min_year, @RequestParam(name = "max_year") Integer max_year,
-                            @RequestParam(name = "engine_type") String engine_type, @RequestParam(name = "drive") String drive,
-                            @RequestParam(name = "min_volume") Double min_volume, @RequestParam(name = "max_volume") Double max_volume,
-                            Model model, @PathVariable ("id") long id) {
-        List<Car> cars = carRepository.findByBrandAndModelAndPriceBetweenAndTransmissionAndBodyAndYear_of_issueBetweenAndEngine_typeAndDriveAndVolumeBetween(
-                brand, model_car, min_price, max_price, transmission, body, min_year, max_year, engine_type, drive, min_volume, max_volume);
+    @PostMapping("/filter")
+    public String filter(@ModelAttribute("filtering") CarForFilter carForFilter, Model model) {
+        List<Car> cars = carRepository.findByBrandAndModelAndPriceBetween(carForFilter.getBrand(), carForFilter.getModel(), carForFilter.getMin_price(), carForFilter.getMax_price());
+        model.addAttribute("key", null);
         model.addAttribute("cars", cars);
+        model.addAttribute("filtering", carForFilter);
         return "home";
     }
+
+    @PostMapping("/filter/{id}")
+    public String filtering(@ModelAttribute("filtering") CarForFilter carForFilter, Model model, @PathVariable("id") long id) {
+        List<Car> cars = carRepository.findByBrandAndModelAndPriceBetween(carForFilter.getBrand(), carForFilter.getModel(), carForFilter.getMin_price(), carForFilter.getMax_price());
+        model.addAttribute("key", keyRepository.findById(id).get());
+        model.addAttribute("cars", cars);
+        model.addAttribute("filtering", carForFilter);
+        return "home";
+    }
+
 }

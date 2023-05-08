@@ -19,23 +19,27 @@
         <br/>
         <form class="authorization" th:method="post" th:action="@{/register-seller/{id}(id=${user.getId()})}" th:object="${seller}">
             <div class="form-floating">
-                <input type="text" class="form-control" id="surname" placeholder="text" aria-describedby="surname" required th:field="*{surname}">
+                <input type="text" class="form-control" id="surname" placeholder="text" aria-describedby="surname"
+                       required pattern="[а-яА-ЯёЁ]+" maxlength="20" th:field="*{surname}">
                 <label for="surname">Фамилия</label>
             </div>
             <br/>
             <div class="form-floating">
-                <input type="text" class="form-control" id="name" placeholder="text" aria-describedby="name" required th:field="*{name}">
+                <input type="text" class="form-control" id="name" placeholder="text" aria-describedby="name"
+                       required pattern="[а-яА-ЯёЁ]+" maxlength="20" th:field="*{name}">
                 <label for="name">Имя</label>
             </div>
             <br/>
             <div class="form-floating">
-                <input type="text" class="form-control" id="lastname" placeholder="text" aria-describedby="lastname" required th:field="*{lastname}">
+                <input type="text" class="form-control" id="lastname" placeholder="text" aria-describedby="lastname"
+                       required pattern="[а-яА-ЯёЁ]+" maxlength="20" th:field="*{lastname}">
                 <label for="lastname">Отчество</label>
             </div>
             <br/>
             <div class="input-group">
                 <span class="input-group-text" id="phone">+</span>
-                <input type="text" class="form-control" id="phone_num" placeholder="Номер телефона" aria-describedby="phone" required minlength="11" maxlength="12" th:field="*{phone}">
+                <input type="text" class="form-control" id="phone_num" placeholder="Номер телефона" aria-describedby="phone"
+                       required minlength="11" maxlength="12" th:field="*{phone}" pattern="\d+" title="Пожалуйста, введите только цифры">
             </div>
             <br/>
             <div class="authorization">

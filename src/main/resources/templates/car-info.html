@@ -19,7 +19,7 @@
             <div class="carousel-indicators">
                 <button type="button" style="display: none" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <div th:each="image, index : ${images}">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" th:data-bs-slide-to="${index.count}" aria-label="Slide [${index.count + 1}]" th:classappend="${index.first}? active"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" th:data-bs-slide-to="${index.count}" aria-label="Slide [${index.count}]" th:classappend="${index.first}? active"></button>
                 </div>
             </div>
             <div class="carousel-inner">
@@ -43,7 +43,7 @@
             <h2 class="text-center">
                 <span class="text-capitalize" th:text="${car.getBrand()}">Марка</span>
                 <span class="text-capitalize" th:text="${car.getModel()}">Модель</span>
-                <span th:text="${car.getYear_of_issue()}">Год</span>
+                <span th:text="${car.getYear()}">Год</span>
             </h2>
             <br/>
             <h3>$<span th:text="${car.getPrice()}">Цена</span></h3>
@@ -53,7 +53,7 @@
             <br/>
             <h5>Коробка передач: <span th:text="${car.getTransmission()}">Коробка передач</span></h5>
             <h5>Объём: <span th:text="${car.getVolume()}">Объём</span>л.</h5>
-            <h5>Тип двигателя: <span th:text="${car.getEngine_type()}">Тип двигателя</span></h5>
+            <h5>Тип двигателя: <span th:text="${car.getEngine()}">Тип двигателя</span></h5>
             <h5>Тип кузова: <span th:text="${car.getBody()}">Кузов</span></h5>
             <h5>Пробег: <span th:text="${car.getMileage()}">Пробег</span>км</h5>
             <br/>

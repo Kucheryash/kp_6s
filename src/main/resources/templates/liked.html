@@ -23,7 +23,7 @@
                     <div th:if="${fav.getCar().getId()==car.getId()}" class="card" style="padding: 0; margin: 20px; width: 1116px">
                         <div class="row align-items-center" style="width: 1116px; height: 160px; margin: 0">
                             <div class="col" style="object-fit: cover; min-width: 160px; padding: 0">
-                                <img th:src="${car.getImage().getPath()}" style="width: 160px; height: 160px" alt="Preview photo">
+                                <img th:src="${car.getImage().getPath()}" style="object-fit: cover; width: 160px; height: 160px" alt="Preview photo">
                             </div>
                             <div class="col text-center" style="min-width: 200px">
                                 <a style="text-decoration: none" th:href="@{/{idkey}/info/{id}(idkey=${key.getId()}, id=${car.getId()})}">
@@ -31,11 +31,11 @@
                                     <h4 class="text-capitalize" th:text="${car.getModel()}">Модель</h4>
                                 </a>
                                 <br/>
-                                <h5 th:text="${car.getYear_of_issue()}">Год</h5>
+                                <h5 th:text="${car.getYear()}">Год</h5>
                             </div>
                             <div class="col" style="min-width: 550px">
                                 <span><span th:text="${car.getTransmission()}">Коробка передач</span>, <span th:text="${car.getVolume()}">Объём</span>л.,
-                                <span th:text="${car.getEngine_type()}">Тип двигателя</span>, <span th:text="${car.getBody()}">Кузов</span>,
+                                <span th:text="${car.getEngine()}">Тип двигателя</span>, <span th:text="${car.getBody()}">Кузов</span>,
                                 <span th:text="${car.getMileage()}">Пробег</span>км</span>
                                 <br/><br/><br/>
                                 <p class="card-text"><small class="text-muted" th:text="${car.getCountry().getCountry()}">Страна</small><small class="text-muted">,</small>

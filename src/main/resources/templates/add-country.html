@@ -20,17 +20,17 @@
         <div th:object="${car}">
             <form class="authorization" th:method="post" th:action="@{/add-country/{id}(id=${car.getId()})}" th:object="${countries}">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="country" aria-describedby="country" required th:field="*{country}">
+                    <input type="text" class="form-control" id="country" aria-describedby="country" pattern="[а-яА-ЯёЁ]+" maxlength="20" required th:field="*{country}">
                     <label for="country">Страна</label>
                 </div>
                 <br/>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="region" aria-describedby="region" required th:field="*{region}">
+                    <input type="text" class="form-control" id="region" aria-describedby="region" pattern="[а-яА-ЯёЁ]+" maxlength="20" required th:field="*{region}">
                     <label for="region">Область</label>
                 </div>
                 <br/>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="city" aria-describedby="city" required th:field="*{city}">
+                    <input type="text" class="form-control" id="city" aria-describedby="city" pattern="[а-яА-ЯёЁ]+" maxlength="20" required th:field="*{city}">
                     <label for="city">Город</label>
                 </div>
                 <br/>
